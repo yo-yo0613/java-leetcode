@@ -1,16 +1,17 @@
-# LeetCode 704. Binary Search
+# LeetCode 104. Maximum Depth of Binary Tree
 
 ### 核心知識點 (Java)
-1. **防止整數溢位 (Overflow)**:
-   - `int mid = (left + right) / 2;` 當 `left` 和 `right` 很大時會變負數。
-   - 推薦寫法：`int mid = left + (right - left) / 2;`。
-2. **邊界條件**:
-   - `while (left <= right)`: 注意這裡有等號，因為當 `left == right` 時，那個元素還沒被檢查過。
+1. **Recursion (遞迴)**: 
+   - 函數呼叫自身來解決子問題。
+   - 必須要有 **Base Case**，否則會發生 `StackOverflowError`。
+2. **Math.max()**: 
+   - Java 內建的工具類，用於取出兩數中的最大值。
 
 ### 解題策略
-- **分治法 (Divide and Conquer)**: 每次排除掉一半的可能性。
-- **時間複雜度**: $O(\log n)$。這比 $O(n)$ 快非常多，在 100 萬筆資料中，最多只需要比對 20 次。
-- **空間複雜度**: $O(1)$。
+- **DFS (Depth First Search)**: 
+    - 這種從上到下、深入到底再回傳的邏輯屬於「深度優先搜尋」。
+- **時間複雜度**: $O(n)$，每個節點都會被訪問一次。
+- **空間複雜度**: $O(h)$，h 為樹的高度（來自遞迴呼叫的 Stack 空間）。
 
-### 為什麼這在 Spring Boot 很重要？
-- **效能優化**: 當你在處理已排序的緩存數據、版本號比較、或是大範圍的分頁查詢優化時，二元搜尋的思想無處不在。
+### 為什麼這在後端很重要？
+- **樹狀結構處理**: 無論是處理 JSON 物件導航、檔案系統路徑，還是資料庫中的「父子分類關係」，遞迴都是最直覺的寫法。
